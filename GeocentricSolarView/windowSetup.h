@@ -5,7 +5,7 @@
 #include <thread>
 
 LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-void setWindowSize(int windowWidth, int windowHeight);
+void setWindowSize(unsigned int windowWidth, unsigned int windowHeight);
 bool isAlive = true;
 void graphicsLoop(HWND hWnd);
 

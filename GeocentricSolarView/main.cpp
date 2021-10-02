@@ -10,10 +10,10 @@
 #define KEY_R 0x52
 #define KEY_T 0x54
 
-float radius = 20;
+unsigned int radius = 20;
 
-int tempWindowWidth;
-int tempWindowHeight;
+unsigned int tempWindowWidth;
+unsigned int tempWindowHeight;
 bool tempWindowSizesUpdated = false;
 bool windowMaximized = false;
 bool windowResized = false;
@@ -24,7 +24,7 @@ LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 	case WM_KEYDOWN:
 		switch (wParam) {
 		case VK_SPACE: geocentricView = !geocentricView; return 0;
-		case KEY_R: radius--; return 0;
+		case KEY_R: if (radius == 0) { return 0; } radius--; return 0;
 		case KEY_T: radius++; return 0;
 		}
 	case WM_SIZE:
@@ -62,14 +62,14 @@ LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
-int windowWidth;
-int windowHeight;
-int windowHalfWidth;
-int windowHalfHeight;
+unsigned int windowWidth;
+unsigned int windowHeight;
+unsigned int windowHalfWidth;
+unsigned int windowHalfHeight;
 float posMultiplier;
-int posOffsetX;
-int posOffsetY;
-void setWindowSize(int windowWidth, int windowHeight) {
+unsigned int posOffsetX;
+unsigned int posOffsetY;
+void setWindowSize(unsigned int windowWidth, unsigned int windowHeight) {
 	::windowWidth = windowWidth;
 	::windowHeight = windowHeight;
 	windowHalfWidth = windowWidth / 2;
